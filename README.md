@@ -1,15 +1,2 @@
-# Red Hat Ansible Tower - Workshop and Demo
+# Ansible Tower - Demo
 
-More info coming soon....
-
-
-# Ansible Tower Workshop
-
-Exercises to be used with the Tower Workshop
-
-Please refer to README in the Linklight project
-- The Landing Page - https://www.ansible.com/linklight
-- The Github Source - https://www.github.com/ansible/workshops
-
-hola segundo hola
-test SCM sync on AT
