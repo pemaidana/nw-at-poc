@@ -25,7 +25,7 @@
   tasks:
     nxos_vlans:
       config:
-        - vlan_id: {{ vlan }}
+        - vlan_id: "{{ vlan }}"
           name: test-vlan
           state: active
     state: replaced
