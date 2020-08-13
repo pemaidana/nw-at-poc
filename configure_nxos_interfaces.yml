@@ -34,7 +34,7 @@
     - name: Configure L2 Interfaces
       nxos_l2_interfaces:
         config:
-          - name: interface=Ethernet1/10
+          - name: Ethernet1/10
             trunk:
               allowed_vlans: 299
         state: merged
