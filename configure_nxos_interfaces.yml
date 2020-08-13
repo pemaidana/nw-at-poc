@@ -22,7 +22,7 @@
     - name: Create a vlan on device
       nxos_vlans:
         config:
-          - vlan_id: "{{ vlan.item }}"
+          - vlan_id: "{{ vlan }}"
             name: "{{ description.item }}"
             state: active
         state: replaced
