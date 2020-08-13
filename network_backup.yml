@@ -24,7 +24,7 @@
       vars:
         ansible_connection: ssh
       copy:
-        src: "{{config_output.stdout}}"
+        src: "{{config_output}}"
         dest: "/backup/{{inventory_hostname}}"
       delegate_to: ansible
       when: config_output is defined
