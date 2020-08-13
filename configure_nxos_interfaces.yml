@@ -36,7 +36,7 @@
         config:
           - name: interface=Ethernet1/10
             trunk:
-            allowed_vlans: 299
+              allowed_vlans: 299
         state: merged
         
     - name: Configure L3 Interfaces
