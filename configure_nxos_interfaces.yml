@@ -11,12 +11,10 @@
             description: 'Conf by Ansible'
             mode: layer2
             enabled: True
-            mtu: 9000
           - name: Ethernet1/11
             description: 'Conf by Ansible'
             mode: layer3
             enabled: True
-            mtu: 9000
         state: replaced
 
 - name: VLAN Provision
