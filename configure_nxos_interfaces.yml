@@ -15,7 +15,7 @@
             description: 'Conf by Ansible'
             mode: layer3
             enabled: True
-        state: merged
+        state: replaced
 
 - name: VLAN Provision
   hosts: nxos
@@ -38,13 +38,14 @@
         config:
           - name: Ethernet1/10
             trunk:
+              native_vlan: 1
               allowed_vlans: 299
         state: merged
         
     - name: Configure L3 Interfaces
       nxos_l3_interfaces:
         config:
-          - name: Ethernet1/10
+          - name: Ethernet1/11
             ipv4: 192.168.222.1
         state: merged
  
