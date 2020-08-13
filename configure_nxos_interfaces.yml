@@ -1,0 +1,48 @@
+---
+
+- name:  Configuring features required
+  hosts:  nxos
+  tasks:
+    - name: Configuring feature interface-vlan
+      nxos_command:
+        host: "{{ inventory_hostname }}"
+        type: config
+        command: "feature interface-vlan"
+
+- name: General Config on Physical Interfaces
+  nxos_interfaces:
+    config:
+      - name: Ethernet1/10
+        description: 'L3 interface by Ansible Tower'
+        enabled: True
+      - name: Ethernet1/11
+        description: 'L2 interface by Ansible Tower'
+        enabled: True
+    state: merged
+
+- name:  Create VLAN
+  hosts: nxos
+  tasks:
+    nxos_vlans:
+      config:
+        - vlan_id: {{ vlan }}
+          name: test-vlan
+          state: active
+    state: replaced
+
+- name:  Configure interfaces on nexus switch
+  hosts: nxos
+  tasks:
+  - nxos_interface: interface=Ethernet1/10 mode=layer3 admin_state=up host={{ inventory_hostname }}
+  - nxos_l2_interfaces:
+    config:
+      - name: interface=Ethernet1/11
+        trunk:
+          trunk_vlans: {{ vlan }}
+    state: merged
+    
+#  - nxos_interface: interface=vlan{{ vlan }} mode=layer3 admin_state=up host={{ inventory_hostname }}
+#  - nxos_ipv4_interface: interface=Ethernet1/10 ip_addr={{ l3_ip }} mask=24 host={{ inventory_hostname }}
+#  - nxos_switchport: interface=eth1/11 mode=trunk host={{ inventory_hostname }}
+#  - nxos_ipv4_interface: interface=vlan{{ vlan }} ip_addr={{ svi_ip }} mask=24 host={{ inventory_hostname }}
+
