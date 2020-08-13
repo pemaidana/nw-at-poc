@@ -45,4 +45,4 @@
             trunk:
             trunk_vlans: "{{ vlan }}"
         state: merged
-   
+ 
