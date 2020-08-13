@@ -22,8 +22,8 @@
     - name: Create a vlan on device
       nxos_vlans:
         config:
-          - vlan_id: {{ vlan }}
-            name: "{{ vlan_descr }}"
+          - vlan_id: 299
+            name: 'ansible_tower_vlan'
             state: active
         state: replaced
 
@@ -35,7 +35,7 @@
       nxos_l3_interfaces:
         config:
           - name: Ethernet1/10
-            ipv4: {{ l3_ip }}
+            ipv4: 192.168.222.1/24
         state: merged
 
     - name: Configure L2 Interfaces
@@ -43,6 +43,6 @@
         config:
           - name: interface=Ethernet1/11
             trunk:
-            trunk_vlans: {{ vlan }}
+            trunk_vlans: 299
         state: merged
  
