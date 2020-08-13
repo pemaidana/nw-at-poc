@@ -1,0 +1,26 @@
+---
+
+- name:  Configuring features required
+  hosts:  nxos
+  tasks:
+    - name: Configuring feature interface-vlan
+      nxos_command:
+        host: "{{ inventory_hostname }}"
+        type: config
+        command: "feature interface-vlan"
+
+- name:  Configure VLANs
+  hosts: all
+  tasks:
+  - nxos_vlan: vlan_id=100 host={{ inventory_hostname }}
+  - nxos_vlan: vlan_id=200 host={{ inventory_hostname }}
+
+- name:  Configure interfaces on nexus switch
+  hosts: nxos
+  tasks:
+  - nxos_interface: interface=Ethernet1/10 mode=layer3 admin_state=up host={{ inventory_hostname }}
+  - nxos_interface: interface=Ethernet1/11 mode=layer2 admin_state=up host={{ inventory_hostname }}
+  - nxos_interface: interface=vlan{{ vlan }} mode=layer3 admin_state=up host={{ inventory_hostname }}
+  - nxos_ipv4_interface: interface=Ethernet1/10 ip_addr={{ l3_ip }} mask=24 host={{ inventory_hostname }}
+  - nxos_switchport: interface=eth1/11 mode=trunk host={{ inventory_hostname }}
+  - nxos_ipv4_interface: interface=vlan{{ vlan }} ip_addr={{ svi_ip }} mask=24 host={{ inventory_hostname }}
