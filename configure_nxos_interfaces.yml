@@ -2,6 +2,7 @@
 
 - name: General Config on Physical Interfaces
   hosts: nxos
+  gather_facts: no
   tasks:
     - name: Add description to interfaces
       nxos_interfaces:
@@ -16,6 +17,7 @@
 
 - name: VLAN Provision
   hosts: nxos
+  gather_facts: no
   tasks:
     - name: Create a vlan on device
       nxos_vlans:
@@ -27,6 +29,7 @@
 
 - name:  L2 and L3 config on interfaces
   hosts: nxos
+  gather_facts: no
   tasks:
     - name: Configure L3 Interfaces
       nxos_l3_interfaces:
@@ -50,9 +53,4 @@
             trunk:
             trunk_vlans: "{{ vlan }}"
         state: merged
-    
-#  - nxos_interface: interface=vlan{{ vlan }} mode=layer3 admin_state=up host={{ inventory_hostname }}
-#  - nxos_ipv4_interface: interface=Ethernet1/10 ip_addr={{ l3_ip }} mask=24 host={{ inventory_hostname }}
-#  - nxos_switchport: interface=eth1/11 mode=trunk host={{ inventory_hostname }}
-#  - nxos_ipv4_interface: interface=vlan{{ vlan }} ip_addr={{ svi_ip }} mask=24 host={{ inventory_hostname }}
-
+   
