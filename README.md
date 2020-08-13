@@ -1,2 +1,2 @@
-# Ansible Tower - Demo
+# Ansible Tower - PoC with Devnet sandboxes
 
