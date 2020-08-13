@@ -38,7 +38,7 @@
     config:
       - name: interface=Ethernet1/11
         trunk:
-          trunk_vlans: {{ vlan }}
+          trunk_vlans: "{{ vlan }}"
     state: merged
     
 #  - nxos_interface: interface=vlan{{ vlan }} mode=layer3 admin_state=up host={{ inventory_hostname }}
