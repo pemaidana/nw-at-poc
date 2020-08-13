@@ -23,7 +23,7 @@
       nxos_vlans:
         config:
           - vlan_id: "{{ vlan }}"
-            name: "{{ description.item }}"
+            name: "{{ vlan_descr }}"
             state: active
         state: replaced
 
