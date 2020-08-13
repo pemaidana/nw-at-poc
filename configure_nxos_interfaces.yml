@@ -35,8 +35,8 @@
       nxos_l3_interfaces:
         config:
           - name: Ethernet1/10
-            ipv4: 192.168.22.3/24
-        state: overridden
+            ipv4: "{{ l3_ip }}
+        state: merged
 
     - name: Configure L2 Interfaces
       nxos_l2_interfaces:
