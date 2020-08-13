@@ -24,7 +24,7 @@
     - name: Create a vlan on device
       nxos_vlans:
         config:
-          - vlan_id: 299
+          - vlan_id: '299'
             name: 'ansible_tower_vlan'
             state: active
         state: replaced
