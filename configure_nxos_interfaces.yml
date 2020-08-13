@@ -12,15 +12,16 @@
 - name: General Config on Physical Interfaces
   hosts: nxos
   tasks:
-    nxos_interfaces:
-      config:
-        - name: Ethernet1/10
-          description: 'L3 interface by Ansible Tower'
-          enabled: True
-        - name: Ethernet1/11
-          description: 'L2 interface by Ansible Tower'
-          enabled: True
-      state: merged
+    - name: Add description to interfaces
+      nxos_interfaces:
+        config:
+          - name: Ethernet1/10
+            description: 'L3 interface by Ansible Tower'
+            enabled: True
+          - name: Ethernet1/11
+            description: 'L2 interface by Ansible Tower'
+            enabled: True
+        state: merged
 
 - name:  Create VLAN
   hosts: nxos
