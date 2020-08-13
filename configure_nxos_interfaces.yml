@@ -34,8 +34,8 @@
     - name: Configure L3 Interfaces
       nxos_l3_interfaces:
         config:
-          - name: Ethernet1/2
-            ipv4: 192.168.22.3/4
+          - name: Ethernet1/10
+            ipv4: 192.168.22.3/24
         state: overridden
 
     - name: Configure L2 Interfaces
