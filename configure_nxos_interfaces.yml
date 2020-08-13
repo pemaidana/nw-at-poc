@@ -48,6 +48,7 @@
       nxos_l3_interfaces:
         config:
           - name: Ethernet1/11
-            ipv4: 192.168.222.1
+            ipv4: 
+              address: 192.168.222.1
         state: merged
  
