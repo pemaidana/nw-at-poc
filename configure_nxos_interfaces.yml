@@ -34,16 +34,31 @@
             state: active
         state: replaced
 
-- name:  Configure interfaces on nexus switch
+- name:  L2 and L3 config on interfaces
   hosts: nxos
   tasks:
-  - nxos_interface: interface=Ethernet1/10 mode=layer3 admin_state=up host={{ inventory_hostname }}
-  - nxos_l2_interfaces:
-    config:
-      - name: interface=Ethernet1/11
-        trunk:
-          trunk_vlans: "{{ vlan }}"
-    state: merged
+    - name: Configure L3 Interfaces
+      nxos_l3_interfaces:
+        config:
+          - name: Ethernet1/10
+            ipv4:
+              - address: 192.168.1.1/24
+                tag: 5
+              - address: 10.1.1.1/24
+                secondary: True
+                tag: 10
+            ipv6:
+              - address: fd5d:12c9:2201:2::1/64
+                tag: 6
+        state: merged
+
+    - name: Configure L2 Interfaces
+      nxos_l2_interfaces:
+        config:
+          - name: interface=Ethernet1/11
+            trunk:
+            trunk_vlans: "{{ vlan }}"
+        state: merged
     
 #  - nxos_interface: interface=vlan{{ vlan }} mode=layer3 admin_state=up host={{ inventory_hostname }}
 #  - nxos_ipv4_interface: interface=Ethernet1/10 ip_addr={{ l3_ip }} mask=24 host={{ inventory_hostname }}
