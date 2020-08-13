@@ -31,18 +31,18 @@
   hosts: nxos
   gather_facts: no
   tasks:
-    - name: Configure L3 Interfaces
-      nxos_l3_interfaces:
-        config:
-          - name: Ethernet1/10
-            ipv4: 192.168.222.1/24
-        state: merged
-
     - name: Configure L2 Interfaces
       nxos_l2_interfaces:
         config:
           - name: interface=Ethernet1/11
             trunk:
             trunk_vlans: 299
+        state: merged
+        
+    - name: Configure L3 Interfaces
+      nxos_l3_interfaces:
+        config:
+          - name: Ethernet1/10
+            ipv4: 192.168.222.1
         state: merged
  
