@@ -23,15 +23,16 @@
             enabled: True
         state: merged
 
-- name:  Create VLAN
+- name: VLAN Provision
   hosts: nxos
   tasks:
-    nxos_vlans:
-      config:
-        - vlan_id: "{{ vlan }}"
-          name: test-vlan
-          state: active
-    state: replaced
+    - name: Create a vlan on device
+      nxos_vlans:
+        config:
+          - vlan_id: "{{ vlan }}"
+            name: test-vlan
+            state: active
+        state: replaced
 
 - name:  Configure interfaces on nexus switch
   hosts: nxos
