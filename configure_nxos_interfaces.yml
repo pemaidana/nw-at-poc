@@ -1,14 +1,5 @@
 ---
 
-- name:  Configuring features required
-  hosts:  nxos
-  tasks:
-    - name: Configuring feature interface-vlan
-      nxos_command:
-        host: "{{ inventory_hostname }}"
-        type: config
-        command: "feature interface-vlan"
-
 - name: General Config on Physical Interfaces
   hosts: nxos
   tasks:
