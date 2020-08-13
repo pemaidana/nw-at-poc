@@ -8,10 +8,10 @@
       nxos_interfaces:
         config:
           - name: Ethernet1/10
-            description: 'L3 interface by Ansible Tower'
+            description: 'Conf by Ansible'
             enabled: True
           - name: Ethernet1/11
-            description: 'L2 interface by Ansible Tower'
+            description: 'Conf by Ansible'
             enabled: True
         state: merged
 
@@ -34,7 +34,7 @@
     - name: Configure L2 Interfaces
       nxos_l2_interfaces:
         config:
-          - name: interface=Ethernet1/11
+          - name: interface=Ethernet1/10
             trunk:
             trunk_vlans: 299
         state: merged
