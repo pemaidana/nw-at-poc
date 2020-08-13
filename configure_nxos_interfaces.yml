@@ -14,12 +14,12 @@
   tasks:
     nxos_interfaces:
       config:
-      - name: Ethernet1/10
-        description: 'L3 interface by Ansible Tower'
-        enabled: True
-      - name: Ethernet1/11
-        description: 'L2 interface by Ansible Tower'
-        enabled: True
+        - name: Ethernet1/10
+          description: 'L3 interface by Ansible Tower'
+          enabled: True
+        - name: Ethernet1/11
+          description: 'L2 interface by Ansible Tower'
+          enabled: True
       state: merged
 
 - name:  Create VLAN
