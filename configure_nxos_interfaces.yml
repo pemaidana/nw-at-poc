@@ -47,7 +47,6 @@
         config:
           - name: Ethernet1/11
             ipv4: 
-            - address: 192.168.222.1
-              tag: 5
+            - address: 192.168.222.1/24
         state: merged
  
